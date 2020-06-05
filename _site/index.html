@@ -1,0 +1,152 @@
+<!DOCTYPE html><html><head><title>Mocked Streams: Home</title><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Jendrik Poloczek" /><meta name="description" content="Unit-Testing Topologies in Kafka Streams" /><meta name="og:image" content="/img/poster.png" /><meta name="image" property="og:image" content="/img/poster.png" /><meta name="og:title" content="Mocked Streams: Home" /><meta name="title" property="og:title" content="Mocked Streams: Home" /><meta name="og:site_name" content="Mocked Streams" /><meta name="og:url" content="" /><meta name="og:type" content="website" /><meta name="og:description" content="Unit-Testing Topologies in Kafka Streams" /><link rel="icon" type="image/png" href="/img/favicon.png" /><meta name="twitter:title" content="Mocked Streams: Home" /><meta name="twitter:image" content="http://mockedstreams.madewithtea.com/img/poster.png" /><meta name="twitter:description" content="Unit-Testing Topologies in Kafka Streams" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:site" content="@madewithtea" /><meta name="twitter:creator" content="@madewithtea" /><link rel="icon" type="image/png" sizes="16x16" href="/img/favicon16x16.png" /><link rel="icon" type="image/png" sizes="24x24" href="/img/favicon24x24.png" /><link rel="icon" type="image/png" sizes="32x32" href="/img/favicon32x32.png" /><link rel="icon" type="image/png" sizes="48x48" href="/img/favicon48x48.png" /><link rel="icon" type="image/png" sizes="57x57" href="/img/favicon57x57.png" /><link rel="icon" type="image/png" sizes="60x60" href="/img/favicon60x60.png" /><link rel="icon" type="image/png" sizes="64x64" href="/img/favicon64x64.png" /><link rel="icon" type="image/png" sizes="70x70" href="/img/favicon70x70.png" /><link rel="icon" type="image/png" sizes="72x72" href="/img/favicon72x72.png" /><link rel="icon" type="image/png" sizes="76x76" href="/img/favicon76x76.png" /><link rel="icon" type="image/png" sizes="96x96" href="/img/favicon96x96.png" /><link rel="icon" type="image/png" sizes="114x114" href="/img/favicon114x114.png" /><link rel="icon" type="image/png" sizes="120x120" href="/img/favicon120x120.png" /><link rel="icon" type="image/png" sizes="128x128" href="/img/favicon128x128.png" /><link rel="icon" type="image/png" sizes="144x144" href="/img/favicon144x144.png" /><link rel="icon" type="image/png" sizes="150x150" href="/img/favicon150x150.png" /><link rel="icon" type="image/png" sizes="152x152" href="/img/favicon152x152.png" /><link rel="icon" type="image/png" sizes="196x196" href="/img/favicon196x196.png" /><link rel="icon" type="image/png" sizes="310x310" href="/img/favicon310x310.png" /><link rel="icon" type="image/png" sizes="310x150" href="/img/favicon310x150.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/highlight/styles/vs.css" /><link rel="stylesheet" href="/css/pattern-style.css" /></head><body><header id="site-header"><div class="navbar-wrapper"><div class="container"><div class="row"><div class="col-xs-6"><a href="/" class="brand"><div class="icon-wrapper"><span>Mocked Streams</span></div></a></div><div class="col-xs-6"><nav class="text-right"><ul class=""><li><a href="https://github.com/jpzk/mockedstreams" target="_blank" rel="noopener noreferrer"><i class="fa fa-github"></i><span class="hidden-xs">GitHub</span></a></li><li><a href="/docs"><i class="fa fa-file-text"></i><span class="hidden-xs">Documentation</span></a></li></ul></nav></div></div></div></div><div class="jumbotron"><div class="container"><h1 class="text-center">Unit-Testing Topologies in Kafka Streams</h1><h2></h2><p class="text-center"><a href="https://github.com/jpzk/mockedstreams" target="_blank" rel="noopener noreferrer" class="btn btn-outline-inverse">View on GitHub</a></p></div></div><div id="horizontal-menu"><ul class="horizontal-nav"></ul></div></header><main id="site-main"><section class="use"><div class="container"><div id="content"><p><a href="https://travis-ci.org/jpzk/mockedstreams"><img src="https://travis-ci.org/jpzk/mockedstreams.svg?branch=master" alt="Build Status" /></a>   <a href="https://www.codacy.com/app/jpzk/mockedstreams?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jpzk/mockedstreams&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/8abac3d072e54fa3a13dc3da04754c7b" alt="Codacy Badge" /></a>
+<a href="https://codecov.io/gh/jpzk/mockedstreams"><img src="https://codecov.io/gh/jpzk/mockedstreams/branch/master/graph/badge.svg" alt="codecov" /></a></p>
+
+<p>Mocked Streams 3.5.2 is a library for Scala 2.12 and Scala 2.13 which allows you to <strong>unit-test processing topologies</strong> of <a href="https://kafka.apache.org/documentation#streams">Kafka Streams</a> applications (since Apache Kafka &gt;=0.10.1) <strong>without Zookeeper and Kafka Brokers</strong>. Further, you can use your favourite Scala testing framework e.g. <a href="http://www.scalatest.org/">ScalaTest</a> and <a href="https://etorreborre.github.io/specs2/">Specs2</a>. Mocked Streams is located at the Maven Central Repository, therefore you just have to add the following to your <a href="http://www.scala-sbt.org/0.13/docs/Library-Dependencies.html">SBT dependencies</a>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>libraryDependencies += "com.madewithtea" %% "mockedstreams" % "3.5.2" % "test"
+</code></pre></div></div>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<p>It wraps the <a href="https://github.com/apache/kafka/blob/trunk/streams/test-utils/src/main/java/org/apache/kafka/streams/TopologyTestDriver.java">org.apache.kafka.streams.TopologyTestDriver</a> class, but adds more syntactic sugar to keep your test code simple:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import com.madewithtea.mockedstreams.MockedStreams
+
+val input = Seq(("x", "v1"), ("y", "v2"))
+val exp = Seq(("x", "V1"), ("y", "V2"))
+val strings = Serdes.String()
+
+MockedStreams()
+  .topology { builder =&gt; builder.stream(...) [...] } // Scala DSL
+  .input("topic-in", strings, strings, input)
+  .output("topic-out", strings, strings, exp.size) shouldEqual exp
+</code></pre></div></div>
+
+<h2 id="apache-kafka-compatibility">Apache Kafka Compatibility</h2>
+
+<p>Please use the corresponding Mocked Streams version to a concrete Apache Kafka version.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mocked Streams Version</th>
+      <th>Apache Kafka Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3.5.2</td>
+      <td>2.4.0.0</td>
+    </tr>
+    <tr>
+      <td>3.5.1</td>
+      <td>2.4.0.0</td>
+    </tr>
+    <tr>
+      <td>3.5.0</td>
+      <td>2.4.0.0</td>
+    </tr>
+    <tr>
+      <td>3.4.0</td>
+      <td>2.3.0.0</td>
+    </tr>
+    <tr>
+      <td>3.3.0</td>
+      <td>2.2.0.0</td>
+    </tr>
+    <tr>
+      <td>3.2.0</td>
+      <td>2.1.1.0</td>
+    </tr>
+    <tr>
+      <td>3.1.0</td>
+      <td>2.1.0.0</td>
+    </tr>
+    <tr>
+      <td>2.2.0</td>
+      <td>2.1.0.0</td>
+    </tr>
+    <tr>
+      <td>2.1.0</td>
+      <td>2.0.0.0</td>
+    </tr>
+    <tr>
+      <td>2.0.0</td>
+      <td>2.0.0.0</td>
+    </tr>
+    <tr>
+      <td>1.8.0</td>
+      <td>1.1.1.0</td>
+    </tr>
+    <tr>
+      <td>1.7.0</td>
+      <td>1.1.0.0</td>
+    </tr>
+    <tr>
+      <td>1.6.0</td>
+      <td>1.0.1.0</td>
+    </tr>
+    <tr>
+      <td>1.5.0</td>
+      <td>1.0.0.0</td>
+    </tr>
+    <tr>
+      <td>1.4.0</td>
+      <td>0.11.0.1</td>
+    </tr>
+    <tr>
+      <td>1.3.0</td>
+      <td>0.11.0.0</td>
+    </tr>
+    <tr>
+      <td>1.2.1</td>
+      <td>0.10.2.1</td>
+    </tr>
+    <tr>
+      <td>1.2.0</td>
+      <td>0.10.2.0</td>
+    </tr>
+    <tr>
+      <td>1.1.0</td>
+      <td>0.10.1.1</td>
+    </tr>
+    <tr>
+      <td>1.0.0</td>
+      <td>0.10.1.0</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="companies-using-mocked-streams">Companies using Mocked Streams</h2>
+
+<ul>
+  <li><a href="https://medium.com/blablacar-tech">BlaBlaCar</a></li>
+  <li><a href="https://www.pmu.fr/">PMU.fr</a></li>
+  <li><a href="https://www.sky.com/">Sky.uk</a></li>
+  <li><a href="https://www.hivestreaming.com/">Hive Streaming AB</a></li>
+  <li><a href="https://moip.com.br/en/">moip, a wirecard company</a></li>
+</ul>
+</div></div></section><section class="technologies"><div class="container"><div class="row">
+            <div class="col-md-4"><div class="first-icon-wrapper"></div><h3>Scala</h3><p>sbt-microsites plugin is completely written in Scala</p></div>
+          
+            <div class="col-md-4"><div class="second-icon-wrapper"></div><h3>SBT</h3><p>sbt-microsites plugin uses SBT and other sbt plugins to generate microsites easily</p></div>
+          
+            <div class="col-md-4"><div class="third-icon-wrapper"></div><h3>Jekyll</h3><p>Jekyll allows for the transformation of plain text into static websites and blogs.</p></div>
+          </div></div></section></main><footer id="site-footer"><div class="container"><div class="row"><div class="col-xs-6"><p>Mocked Streams is designed and developed by <a href="https://www.madewithtea.com" target="_blank" rel="noopener noreferrer">Jendrik Poloczek</a></p></div><div class="col-xs-6"><p class="text-right"><a href="https://github.com/jpzk/mockedstreams" target="_blank" rel="noopener noreferrer"><span class="fa fa-github"></span>View on GitHub</a></p></div></div><div class="row"><div class="col-xs-6"><p>Website built with <a href="https://47degrees.github.io/sbt-microsites/" target="_blank" rel="noopener noreferrer">sbt-microsites</a> - © 2019 <a href="https://www.47deg.com/" target="_blank" rel="noopener noreferrer">47 Degrees</a></p></div></div></div></footer><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/highlight/highlight.pack.js"></script><script>
+// For all code blocks, copy the language from the containing div
+// to the inner code tag (where hljs expects it to be)
+const langPrefix = 'language-';
+document.querySelectorAll(`div[class^='${langPrefix}']`).forEach(function(div) {
+  div.classList.forEach(function(cssClass) {
+    if (cssClass.startsWith(langPrefix)) {
+      const lang = cssClass.substring(langPrefix.length);
+      div.querySelectorAll('pre code').forEach(function(code) {
+        code.classList.add(lang);
+      });
+    }
+  });
+});
+
+hljs.configure({languages:['scala','java','bash']});
+hljs.initHighlightingOnLoad();
+      </script><script>console.info('\x57\x65\x62\x73\x69\x74\x65\x20\x62\x75\x69\x6c\x74\x20\x77\x69\x74\x68\x3a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x5f\x5f\x0a\x20\x20\x20\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x5f\x20\x20\x2f\x20\x2f\x5f\x20\x20\x20\x20\x20\x20\x5f\x5f\x5f\x5f\x20\x5f\x5f\x5f\x20\x20\x28\x5f\x29\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x28\x5f\x29\x20\x2f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x0a\x20\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x60\x5f\x5f\x20\x5c\x2f\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x20\x2f\x20\x5f\x5f\x2f\x20\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x0a\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x5f\x2f\x20\x2f\x20\x2f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x5f\x5f\x2f\x20\x2f\x20\x20\x2f\x20\x2f\x5f\x2f\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x20\x2f\x5f\x2f\x20\x20\x5f\x5f\x28\x5f\x5f\x20\x20\x29\x0a\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2e\x5f\x5f\x5f\x2f\x5c\x5f\x5f\x2f\x20\x20\x20\x20\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x2f\x20\x20\x20\x5c\x5f\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x0a\x0a\x68\x74\x74\x70\x73\x3a\x2f\x2f\x34\x37\x64\x65\x67\x2e\x67\x69\x74\x68\x75\x62\x2e\x69\x6f\x2f\x73\x62\x74\x2d\x6d\x69\x63\x72\x6f\x73\x69\x74\x65\x73')</script><script src="/js/version-selector.js"></script></body></html>

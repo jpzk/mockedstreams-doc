@@ -1,0 +1,11 @@
+name: Mocked Streams
+baseurl: ''
+description: Unit-Testing Topologies in Kafka Streams
+highlighter: rouge
+docs: true
+collections:
+  tut:
+    output: true
+version: 3.4.0
+org: com.madewithtea
+markdown: kramdown
